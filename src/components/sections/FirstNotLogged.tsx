@@ -2,8 +2,16 @@
 import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
 import LoginAndRegisterModal from "../LoginAndRegisterModal"
+import { useState } from "react"
 
 export default function FirstNotLogged() {
+
+    const [text, setText] = useState('');
+
+    const handleChange = (event) => {
+        setText(event.target.value);
+    };
+
 
     return (
         <div className="flex flex-col justify-center items-start gap-4 mt-32 min-h-[450px]">
@@ -13,10 +21,11 @@ export default function FirstNotLogged() {
             </div>
             <Separator />
             <div className="flex flex-col items-start max-w-sm  gap-4 space-x-2 mt-3">
-                <Textarea placeholder="Abrí esa panaderia" className="resize-none min-w-[400px]"
+                <Textarea value={text}
+                    onChange={handleChange} placeholder="Abrí esa panaderia" className="resize-none min-w-[400px]"
                 />
                 <div>
-                    <LoginAndRegisterModal />
+                    <LoginAndRegisterModal buttonDisabled={text} />
                 </div>
             </div>
             <hr />

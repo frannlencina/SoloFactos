@@ -27,10 +27,16 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 
-export default function LoginAndRegisterModal() {
+interface Props {
+    buttonDisabled: string;
+}
+
+export default function LoginAndRegisterModal( { buttonDisabled }: Props ) {
     return (
         <Dialog>
-            <DialogTrigger><Button>Postear</Button></DialogTrigger>
+            <DialogTrigger disabled={!buttonDisabled.trim()} >
+                <Button disabled={!buttonDisabled.trim()}>Postear</Button>
+                </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogDescription>
